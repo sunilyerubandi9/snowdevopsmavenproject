@@ -11,5 +11,6 @@ public class App
         System.out.println( "Commit 1 : update story" );
         
         System.out.println( "Commit 2 : update story" );
+        System.out.println( "Commit 3 : update story" );
     }
 }
