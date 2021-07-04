@@ -9,5 +9,7 @@ public class App
     public static void main( String[] args )
     {
         System.out.println( "Commit 1 : update story" );
+        
+        System.out.println( "Commit 2 : update story" );
     }
 }
