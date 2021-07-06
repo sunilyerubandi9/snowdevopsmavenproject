@@ -18,6 +18,8 @@ public class App
         
         System.out.println( "Commit 6 : update story" );
         
-        System.out.println( "Commit 7 : update story" );
+       System.out.println("STRY0010053: Story update");
+       
+       System.out.println("STRY0010054: Story update");
     }
 }
