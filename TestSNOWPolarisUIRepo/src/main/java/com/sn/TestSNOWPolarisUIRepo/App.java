@@ -27,5 +27,7 @@ public class App
        System.out.println("STRY0010005: Story update");
        
        System.out.println("STRY0010178: Story update");
+       
+       System.out.println("718: Story update");
     }
 }
