@@ -52,6 +52,8 @@ public class App
        System.out.println("725: Story update");
        
        System.out.println("723: Story update");
+       
+       System.out.println("725: Story update");
     }
     
 }
