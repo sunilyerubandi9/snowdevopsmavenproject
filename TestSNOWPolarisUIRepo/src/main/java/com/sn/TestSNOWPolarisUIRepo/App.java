@@ -9,6 +9,6 @@ public class App
     public static void main( String[] args )
     {
        
-       System.out.println("722: Story update");
+       System.out.println("721: Story update");
     }
     
