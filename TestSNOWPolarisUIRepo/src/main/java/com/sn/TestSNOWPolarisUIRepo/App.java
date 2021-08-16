@@ -7,6 +7,6 @@ package com.sn.TestSNOWPolarisUIRepo;
 public class App {
     public static void main( String[] args ){
     	
-       System.out.println("749: Story 749 update");
+       System.out.println("752: Story 752 update");
     }
 }
