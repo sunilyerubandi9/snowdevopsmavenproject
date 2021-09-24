@@ -5,8 +5,10 @@ package com.sn.TestSNOWPolarisUIRepo;
  * new changes
  */
 public class App {
-    public static void main( String[] args ){
+    public static void main( String[] args )	{
     	
-       System.out.println("STRY0010143: Story update");
+       System.out.println("STRY0010084: Story update");
     
+    }
+
 }
