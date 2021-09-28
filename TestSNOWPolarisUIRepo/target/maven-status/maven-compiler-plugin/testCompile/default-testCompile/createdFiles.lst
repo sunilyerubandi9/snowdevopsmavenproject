@@ -1,6 +1,10 @@
-com/sn/TestSNOWPolarisUIRepo/AppTest.class
-com/sn/TestSNOWPolarisUIRepo/AppTest5.class
-com/sn/TestSNOWPolarisUIRepo/AppTest3.class
-com/sn/TestSNOWPolarisUIRepo/AppTest4.class
-com/sn/TestSNOWPolarisUIRepo/AppTestFailed.class
-com/sn/TestSNOWPolarisUIRepo/AppTestPassed.class
+com/sn/TestSNOWPolarisUIRepo/TestDevOpsApp07.class
+com/sn/TestSNOWPolarisUIRepo/TestDevOpsApp08.class
+com/sn/TestSNOWPolarisUIRepo/TestDevOpsApp02.class
+com/sn/TestSNOWPolarisUIRepo/TestDevOpsApp10.class
+com/sn/TestSNOWPolarisUIRepo/TestDevOpsApp04.class
+com/sn/TestSNOWPolarisUIRepo/TestDevOpsApp06.class
+com/sn/TestSNOWPolarisUIRepo/TestDevOpsApp09.class
+com/sn/TestSNOWPolarisUIRepo/TestDevOpsApp05.class
+com/sn/TestSNOWPolarisUIRepo/TestDevOpsApp01.class
+com/sn/TestSNOWPolarisUIRepo/TestDevOpsApp03.class
