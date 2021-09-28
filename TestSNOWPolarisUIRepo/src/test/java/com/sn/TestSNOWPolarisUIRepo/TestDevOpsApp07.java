@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
+public class TestDevOpsApp07
 {
     /**
      * Rigorous Test :-)
@@ -21,6 +21,6 @@ public class AppTest
         //Third Change
         //Change for Cascade Delete, again
         //Change For validation of PipelineUI Tests
-        assertTrue( true );
+        assertTrue( false );
     }
 }
