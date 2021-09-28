@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.sn.TestSNOWPolarisUIRepo.TestDevOpsApp07
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in com.sn.TestSNOWPolarisUIRepo.TestDevOpsApp07
+shouldAnswerWithTrue(com.sn.TestSNOWPolarisUIRepo.TestDevOpsApp07)  Time elapsed: 0 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.sn.TestSNOWPolarisUIRepo.TestDevOpsApp07.shouldAnswerWithTrue(TestDevOpsApp07.java:24)
+
