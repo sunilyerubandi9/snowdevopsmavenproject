@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.sn.TestSNOWPolarisUIRepo.AppTest" time="0.02" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.sn.TestSNOWPolarisUIRepo.AppTest" time="0.019" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="gopherProxySet" value="false"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -17,7 +17,7 @@
     <property name="user.country" value="IN"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib"/>
-    <property name="sun.java.command" value="/Users/sunil.yerubandi/git/SunilGitRepos/snowdevopsmavenproject/TestSNOWPolarisUIRepo/target/surefire/surefirebooter4772801943148705138.jar /Users/sunil.yerubandi/git/SunilGitRepos/snowdevopsmavenproject/TestSNOWPolarisUIRepo/target/surefire 2021-09-24T19-41-42_207-jvmRun1 surefire2028852634238500964tmp surefire_0495507828178234120tmp"/>
+    <property name="sun.java.command" value="/Users/sunil.yerubandi/git/SunilGitRepos/snowdevopsmavenproject/TestSNOWPolarisUIRepo/target/surefire/surefirebooter8017796018601399731.jar /Users/sunil.yerubandi/git/SunilGitRepos/snowdevopsmavenproject/TestSNOWPolarisUIRepo/target/surefire 2021-09-28T18-12-53_970-jvmRun1 surefire3322491258468705069tmp surefire_0271234048237845650tmp"/>
     <property name="surefire.test.class.path" value="/Users/sunil.yerubandi/git/SunilGitRepos/snowdevopsmavenproject/TestSNOWPolarisUIRepo/target/test-classes:/Users/sunil.yerubandi/git/SunilGitRepos/snowdevopsmavenproject/TestSNOWPolarisUIRepo/target/classes:/Users/sunil.yerubandi/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/sunil.yerubandi/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/Users/sunil.yerubandi"/>
@@ -30,7 +30,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/Users/sunil.yerubandi/git/SunilGitRepos/snowdevopsmavenproject/TestSNOWPolarisUIRepo/target/surefire/surefirebooter4772801943148705138.jar"/>
+    <property name="surefire.real.class.path" value="/Users/sunil.yerubandi/git/SunilGitRepos/snowdevopsmavenproject/TestSNOWPolarisUIRepo/target/surefire/surefirebooter8017796018601399731.jar"/>
     <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="1.8.0_181-b13"/>
@@ -58,5 +58,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="com.sn.TestSNOWPolarisUIRepo.AppTest" time="0"/>
+  <testcase name="shouldAnswerWithTrue" classname="com.sn.TestSNOWPolarisUIRepo.AppTest" time="0.001"/>
 </testsuite>
