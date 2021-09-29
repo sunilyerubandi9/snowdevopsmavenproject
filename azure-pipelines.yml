@@ -80,7 +80,7 @@ stages:
       - task: InvokeRESTAPI@1
         inputs:
           connectionType: 'connectedServiceName'
-          serviceConnection: 'empsunildevops8-SunSNDevOps-Project-ServiceNow DevOps Service Connection'
+          serviceConnection: 'empsunildevops8-SunSNDevOps-Project-Generic Connection'
           method: 'POST'
           body: |
             {
