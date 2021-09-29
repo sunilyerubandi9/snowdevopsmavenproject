@@ -73,7 +73,7 @@ stages:
         publishJUnitResults: true
         testResultsFiles: '**/TEST-*.xml'
         testRunTitle: 'Test'
-    - task: InvokeRESTAPI@1
+    - task: InvokeRESTAPI@0
       inputs:
         connectionType: 'connectedServiceName'
         serviceConnection: 'empsunildevops8-SunSNDevOps-Project-Generic Connection'
