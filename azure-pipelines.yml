@@ -73,7 +73,6 @@ stages:
          }
         urlSuffix: 'api/sn_devops/v1/devops/orchestration/changeControl?toolId=473acf99877eb010b6feb809cebb352e&toolType=adop'
         waitForCompletion: 'true'
-
     - task: Maven@3
       name: 'Test'
       displayName: 'Test'
