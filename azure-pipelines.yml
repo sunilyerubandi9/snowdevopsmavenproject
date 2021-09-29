@@ -70,9 +70,12 @@ stages:
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '1.8'
         jdkArchitectureOption: 'x64'
-        #publishJUnitResults: true
-        #testResultsFiles: '**/TEST-*.xml'
-        #testRunTitle: 'Test'
+        publishJUnitResults: true
+        testResultsFiles: '**/TEST-*.xml'
+        testRunTitle: 'Test'
+    urlSuffix: 'api/sn_devops/v1/devops/orchestration/changeControl?toolId=473acf99877eb010b6feb809cebb352e&toolType=adop'
+    waitForCompletion: 'true'
+
   - job: 'Package'
     pool: server
     dependsOn: 'Test'
