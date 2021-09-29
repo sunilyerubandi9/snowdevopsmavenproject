@@ -60,19 +60,6 @@ stages:
   jobs:          
   - job: 'Test'
     steps:
-    - task: Maven@3
-      name: 'Test'
-      displayName: 'Test'
-      inputs:
-        goals: 'test'
-        mavenPomFile: 'TestSNOWPolarisUIRepo/pom.xml'
-        mavenOptions: '-Xmx3072m'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '1.8'
-        jdkArchitectureOption: 'x64'
-        publishJUnitResults: true
-        testResultsFiles: '**/TEST-*.xml'
-        testRunTitle: 'Test'
     - task: InvokeRESTAPI@1
       inputs:
         connectionType: 'connectedServiceName'
@@ -87,6 +74,20 @@ stages:
         urlSuffix: 'api/sn_devops/v1/devops/orchestration/changeControl?toolId=473acf99877eb010b6feb809cebb352e&toolType=adop'
         waitForCompletion: 'true'
 
+    - task: Maven@3
+      name: 'Test'
+      displayName: 'Test'
+      inputs:
+        goals: 'test'
+        mavenPomFile: 'TestSNOWPolarisUIRepo/pom.xml'
+        mavenOptions: '-Xmx3072m'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        publishJUnitResults: true
+        testResultsFiles: '**/TEST-*.xml'
+        testRunTitle: 'Test'
+    
   - job: 'Package'
     pool: server
     dependsOn: 'Test'
