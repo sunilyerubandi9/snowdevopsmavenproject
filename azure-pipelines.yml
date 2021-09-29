@@ -60,19 +60,6 @@ stages:
   jobs:          
   - job: 'Test'
     steps:
-    - task: InvokeRESTAPI@1
-      inputs:
-        connectionType: 'connectedServiceName'
-        serviceConnection: 'empsunildevops8-SunSNDevOps-Project-Generic Connection'
-        method: 'POST'
-        body: |
-         {
-            "buildNumber": "$(build.buildId)",
-            "isMultiBranch": "true",
-            "branchName": "$(build.sourceBranchName)"
-         }
-        urlSuffix: 'api/sn_devops/v1/devops/orchestration/changeControl?toolId=473acf99877eb010b6feb809cebb352e&toolType=adop'
-        waitForCompletion: 'true'
     - task: Maven@3
       name: 'Test'
       displayName: 'Test'
