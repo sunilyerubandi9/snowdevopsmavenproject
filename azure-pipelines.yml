@@ -1,22 +1,120 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml 
 
 trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+stages:
+- stage: BuildAndPublish
+  jobs:
+  - job: 'Build'
+    steps:
+    - task: Maven@3
+      name: 'Build'
+      displayName: 'Build'
+      inputs:
+        mavenPomFile: 'TestSNOWPolarisUIRepo/pom.xml'
+        mavenOptions: '-DskipTests -Xmx3072m'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        goals: 'clean install'
+    #- task: PublishBuildArtifacts@1
+    #  inputs:
+    #    pathToPublish: '/home/vsts/.m2/repository/com/sa/web/sentiment-analysis-web/0.0.2-SNAPSHOT/sentiment-analysis-web-0.0.2-SNAPSHOT.jar'
+    #    artifactName: sentiment-analysis.jar
+  - job: 'PublishArtifact'
+    pool: server
+    dependsOn: 'Build'
+    steps:
+    - task: InvokeRESTAPI@1
+      inputs:
+        connectionType: 'connectedServiceName'
+        serviceConnection: 'empsunildevops8-SunSNDevOps-Project-ServiceNow DevOps Service Connection'
+        method: 'POST'
+        body: |
+          {
+            "artifacts":[
+                {
+                  "name":"_snowdevops.spring-boot-webapp",
+                  "version":"1.$(build.buildId)",
+                  "semanticVersion":"1.$(build.buildId).0",
+                  "repositoryName":"snowdevopsmavenproject"
+                }
+            ],
+            "pipelineName":"$(system.teamProject)/$(build.definitionName)",
+            "taskExecutionNumber":"$(build.buildId)",
+            "stageName":"$(system.jobDisplayName)",
+            "branchName": "$(build.sourceBranchName)"
+          }
+        urlSuffix: 'api/sn_devops/v1/devops/artifact/registration?orchestrationToolId=473acf99877eb010b6feb809cebb352e'
+        waitForCompletion: 'false'
+
+- stage: TestAndPackage
+  dependsOn: 'BuildAndPublish'
+  jobs:          
+  - job: 'Test'
+    steps:
+    - task: Maven@3
+      name: 'Test'
+      displayName: 'Test'
+      inputs:
+        goals: 'test'
+        mavenPomFile: 'TestSNOWPolarisUIRepo/pom.xml'
+        mavenOptions: '-Xmx3072m'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        #publishJUnitResults: true
+        #testResultsFiles: '**/TEST-*.xml'
+        #testRunTitle: 'Test'
+  - job: 'Package'
+    pool: server
+    dependsOn: 'Test'
+    steps:
+      - task: InvokeRESTAPI@1
+        inputs:
+          connectionType: 'connectedServiceName'
+          serviceConnection: 'empsunildevops8-SunSNDevOps-Project-ServiceNow DevOps Service Connection'
+          method: 'POST'
+          body: |
+            {
+              "name": "sp-package",
+              "artifacts":[ 
+                  {"name":"_TestProject_1.20-Maven-CI-Test-Package",
+                  "version":"1.$(build.buildId)", 
+                  "repositoryName":"snowdevopsmavenproject" 
+                  }
+              ],
+              "pipelineName": "$(system.teamProject)/$(build.definitionName)",
+              "taskExecutionNumber": "$(build.buildId)",
+              "stageName": "$(system.jobDisplayName)",
+              "branchName": "$(build.sourceBranchName)"
+            }
+          urlSuffix: 'api/sn_devops/v1/devops/package/registration?orchestrationToolId=473acf99877eb010b6feb809cebb352e'
+          waitForCompletion: 'false'
+
+- stage: Deploy
+  dependsOn: 'TestAndPackage'
+  jobs:
+  - job: 'Deploy'
+    pool : server
+    steps:
+    - task: InvokeRESTAPI@1
+      inputs:
+        connectionType: 'connectedServiceName'
+        serviceConnection: 'empsunildevops8-SunSNDevOps-Project-ServiceNow DevOps Service Connection'
+        method: 'POST'
+        body: |
+         {
+            "buildNumber": "$(build.buildId)",
+            "isMultiBranch": "true",
+            "branchName": "$(build.sourceBranchName)"
+         }
+        urlSuffix: 'api/sn_devops/v1/devops/orchestration/changeControl?toolId=473acf99877eb010b6feb809cebb352e&toolType=adop'
+        waitForCompletion: 'true'
