@@ -59,7 +59,6 @@ stages:
   dependsOn: 'BuildAndPublish'
   jobs:          
   - job: 'Test'
-    pool: server
     steps:
     - task: Maven@3
       name: 'Test'
@@ -84,7 +83,7 @@ stages:
              "branchName": 
              "$(build.sourceBranchName)"
           }
-          
+
   - job: 'Package'
     pool: server
     dependsOn: 'Test'
