@@ -35,7 +35,7 @@ stages:
     - task: InvokeRESTAPI@1
       inputs:
         connectionType: 'connectedServiceName'
-        serviceConnection: 'empsunildevops8-SunSNDevOps-Project-Generic Connection'
+        serviceConnection: 'empsunildevops5-SunSNDevOps-Project-Generic Connection'
         method: 'POST'
         body: |
           {
@@ -52,7 +52,7 @@ stages:
             "stageName":"$(system.jobDisplayName)",
             "branchName": "$(build.sourceBranchName)"
           }
-        urlSuffix: 'api/sn_devops/v1/devops/artifact/registration?orchestrationToolId=473acf99877eb010b6feb809cebb352e'
+        urlSuffix: 'api/sn_devops/v1/devops/artifact/registration?orchestrationToolId=c85e4f1b873e30103dc3ca69cebb3587'
         waitForCompletion: 'false'
 
 - stage: TestAndPackage
@@ -64,15 +64,18 @@ stages:
       name: 'Test'
       displayName: 'Test'
       inputs:
-        goals: 'test'
         mavenPomFile: 'TestSNOWPolarisUIRepo/pom.xml'
-        mavenOptions: '-Xmx3072m'
+        goals: 'test'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        testRunTitle: 'Test'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '1.8'
-        jdkArchitectureOption: 'x64'
-        publishJUnitResults: true
-        testResultsFiles: '**/TEST-*.xml'
-        testRunTitle: 'Test'
+        mavenVersionOption: 'Default'
+        mavenOptions: '-Xmx3072m'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
         
   - job: 'Package'
     pool: server
@@ -81,13 +84,13 @@ stages:
       - task: InvokeRESTAPI@1
         inputs:
           connectionType: 'connectedServiceName'
-          serviceConnection: 'empsunildevops8-SunSNDevOps-Project-Generic Connection'
+          serviceConnection: 'empsunildevops5-SunSNDevOps-Project-Generic Connection'
           method: 'POST'
           body: |
             {
               "name": "sp-package",
               "artifacts":[ 
-                  {"name":"_TestProject_1.20-Maven-CI-Test-Package",
+                  {"name":"_TestSNOWPolarisUIRepo-CI-Test-Package",
                   "version":"1.$(build.buildId)", 
                   "repositoryName":"snowdevopsmavenproject" 
                   }
@@ -97,11 +100,11 @@ stages:
               "stageName": "$(system.jobDisplayName)",
               "branchName": "$(build.sourceBranchName)"
             }
-          urlSuffix: 'api/sn_devops/v1/devops/package/registration?orchestrationToolId=473acf99877eb010b6feb809cebb352e'
+          urlSuffix: 'api/sn_devops/v1/devops/package/registration?orchestrationToolId=c85e4f1b873e30103dc3ca69cebb3587'
           waitForCompletion: 'false'
       - task: ServiceNow-DevOps-Server-Change-Acceleration@1
         inputs:
-          connectedServiceName: 'empsunildevops8-SunSNDevOps-Project-ServiceNow DevOps Service Connection'
+          connectedServiceName: 'empsunildevops5-SunSNDevOps-Project-ServiceNow DevOps Service Connection'
           UpstreamJob: 'Test'
           changeRequestDetails: |
             {
@@ -120,13 +123,13 @@ stages:
     - task: InvokeRESTAPI@1
       inputs:
         connectionType: 'connectedServiceName'
-        serviceConnection: 'empsunildevops8-SunSNDevOps-Project-Generic Connection'
+        serviceConnection: 'empsunildevops5-SunSNDevOps-Project-Generic Connection'
         method: 'POST'
         body: |
-         {
-            "buildNumber": "$(build.buildId)",
-            "isMultiBranch": "true",
-            "branchName": "$(build.sourceBranchName)"
-         }
-        urlSuffix: 'api/sn_devops/v1/devops/orchestration/changeControl?toolId=473acf99877eb010b6feb809cebb352e&toolType=adop'
+          {
+             "buildNumber": "$(build.buildId)",
+             "isMultiBranch": "true",
+             "branchName": "$(build.sourceBranchName)"
+          }
+        urlSuffix: 'api/sn_devops/v1/devops/orchestration/changeControl?toolId=c85e4f1b873e30103dc3ca69cebb3587&toolType=adop'
         waitForCompletion: 'true'
