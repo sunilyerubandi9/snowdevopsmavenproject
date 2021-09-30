@@ -77,6 +77,14 @@ stages:
     - task: ServiceNow-DevOps-Server-Change-Acceleration@1
       inputs:
         connectedServiceName: 'empsunildevops8-SunSNDevOps-Project-ServiceNow DevOps Service Connection'
+        changeRequestDetails: |
+          {
+             "buildNumber": "$(build.buildId)",
+             "isMultiBranch": "true",
+             "branchName": 
+             "$(build.sourceBranchName)"
+          }
+          
   - job: 'Package'
     pool: server
     dependsOn: 'Test'
