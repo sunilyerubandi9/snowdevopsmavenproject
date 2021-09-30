@@ -59,6 +59,7 @@ stages:
   dependsOn: 'BuildAndPublish'
   jobs:          
   - job: 'Test'
+    pool: server
     steps:
     - task: Maven@3
       name: 'Test'
@@ -73,7 +74,9 @@ stages:
         publishJUnitResults: true
         testResultsFiles: '**/TEST-*.xml'
         testRunTitle: 'Test'
-    
+    - task: ServiceNow-DevOps-Server-Change-Acceleration@1
+      inputs:
+        connectedServiceName: 'empsunildevops8-SunSNDevOps-Project-ServiceNow DevOps Service Connection'
   - job: 'Package'
     pool: server
     dependsOn: 'Test'
