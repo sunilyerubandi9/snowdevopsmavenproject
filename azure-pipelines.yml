@@ -99,17 +99,16 @@ stages:
             }
           urlSuffix: 'api/sn_devops/v1/devops/package/registration?orchestrationToolId=473acf99877eb010b6feb809cebb352e'
           waitForCompletion: 'false'
-
       - task: ServiceNow-DevOps-Server-Change-Acceleration@1
         inputs:
           connectedServiceName: 'empsunildevops8-SunSNDevOps-Project-ServiceNow DevOps Service Connection'
+          UpstreamJob: 'Test'
           changeRequestDetails: |
             {
                 "setCloseCode" : true,
                 "attributes":{
-                     "assigned_to":"a0e11bb23ba32300b200655593efc491",
-                     "priority":"1" 
-                  }
+                  "assigned_to":"a0e11bb23ba32300b200655593efc491"
+                }
             }
 
 - stage: Deploy
