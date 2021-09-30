@@ -100,15 +100,19 @@ stages:
           urlSuffix: 'api/sn_devops/v1/devops/package/registration?orchestrationToolId=473acf99877eb010b6feb809cebb352e'
           waitForCompletion: 'false'
 
-      - task: ServiceNow-DevOps-Server-Change-Acceleration@1
+      - task: InvokeRESTAPI@1
         inputs:
-          connectedServiceName: 'empvkasina8-SunSNDevOps-Project-ServiceNow DevOps Service Connection'
-          changeRequestDetails: |
+          connectionType: 'connectedServiceName'
+          serviceConnection: 'empsunildevops8-SunSNDevOps-Project-Generic Connection'
+          method: 'POST'
+          body: |
             {
-                "buildNumber": "$(build.buildId)",
-                "isMultiBranch": "true",
-                "branchName": "$(build.sourceBranchName)"
+               "buildNumber": "$(build.buildId)",
+               "isMultiBranch": "true",
+               "branchName": "$(build.sourceBranchName)"
             }
+          urlSuffix: 'api/sn_devops/v1/devops/orchestration/changeControl?toolId=473acf99877eb010b6feb809cebb352e&toolType=adop'
+          waitForCompletion: 'true'
 
 - stage: Deploy
   dependsOn: 'TestAndPackage'
