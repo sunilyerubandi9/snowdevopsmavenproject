@@ -102,20 +102,7 @@ stages:
             }
           urlSuffix: 'api/sn_devops/v1/devops/package/registration?orchestrationToolId=c85e4f1b873e30103dc3ca69cebb3587'
           waitForCompletion: 'false'
-      - task: InvokeRESTAPI@1
-        inputs:
-          connectionType: 'connectedServiceName'
-          serviceConnection: 'empsunildevops5-SunSNDevOps-Project-Generic Connection'
-          method: 'POST'
-          body: |
-            {
-              "buildNumber": "$(build.buildId)",
-              "isMultiBranch": "true",
-              "branchName": "$(build.sourceBranchName)"
-            }
-          urlSuffix: 'api/sn_devops/v1/devops/orchestration/changeControl?toolId=c85e4f1b873e30103dc3ca69cebb3587&toolType=adop'
-          waitForCompletion: 'true'
-
+          
 - stage: Deploy
   dependsOn: 'TestAndPackage'
   jobs:
