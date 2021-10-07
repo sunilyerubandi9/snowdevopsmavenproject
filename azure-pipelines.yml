@@ -116,9 +116,10 @@ stages:
         method: 'POST'
         body: |
           {
-             "buildNumber": "$(build.buildId)",
-             "isMultiBranch": "true",
-             "branchName": "$(build.sourceBranchName)"
+              "setCloseCode" : true,
+              "attributes":{
+          "assigned_to":"a0e11bb23ba32300b200655593efc491"
+                }
           }
         urlSuffix: 'api/sn_devops/v1/devops/orchestration/changeControl?toolId=c15895a187c73010704954e73cbb35c2&toolType=adop'
         waitForCompletion: 'true'
