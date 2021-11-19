@@ -7,7 +7,7 @@ package com.sn.TestSNOWPolarisUIRepo;
 public class App {
     public static void main( String[] args )	{
     	
-       System.out.println("780: Story has been created");
+       System.out.println("781: Story has been created");
     
     }
 
