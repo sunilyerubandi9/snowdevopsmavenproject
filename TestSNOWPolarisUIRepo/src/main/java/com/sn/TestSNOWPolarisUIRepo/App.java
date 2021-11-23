@@ -7,7 +7,7 @@ package com.sn.TestSNOWPolarisUIRepo;
 public class App {
     public static void main( String[] args )	{
     	
-       System.out.println("796: Story state has been created");
+       System.out.println("796: Story state has been updated");
     
     }
 
