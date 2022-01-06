@@ -10,6 +10,7 @@ public class App {
        System.out.println("796: Story state has been updated");
        System.out.println("796: Story state has been updated");
        System.out.println("796: Story state has been updated");
+       System.out.println("797: Story state has been created");
     
     }
 
