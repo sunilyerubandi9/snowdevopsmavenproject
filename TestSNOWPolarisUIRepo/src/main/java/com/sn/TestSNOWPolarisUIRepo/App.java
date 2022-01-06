@@ -20,6 +20,7 @@ public class App {
        System.out.println("799: Story state has been updated");
         System.out.println("800: Story state has been updated");
          System.out.println("801: Story state has been updated");
+        System.out.println("802: Story state has been updated");
     }
 
 }
