@@ -15,7 +15,8 @@ public class App {
         System.out.println("798: Story state has been updated");
          System.out.println("798: Story state has been updated");
         System.out.println("798: Story state has been updated");
-        System.out.println("799: Story state has been updated");
+        System.out.println("799: Story state has been created");
+         System.out.println("799: Story state has been updated");
     }
 
 }
